@@ -280,14 +280,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case LCONTROL:
-    case LOPTION:
-    case LCOMMAND:
-    case LSHIFT:
-    case RSHIFT:
-    case RCOMMAND:
-    case ROPTION:
-    case RCONTROL:
     case C_LCONTROL:
     case C_LOPTION:
     case C_LCOMMAND:
@@ -312,15 +304,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     default:
-     case LCONTROL:
-        case LOPTION:
-        case LCOMMAND:
-        case LSHIFT:
-        case RSHIFT:
-        case RCOMMAND:
-        case ROPTION:
-        case RCONTROL:
-        case MEDIA_ESC:
         case C_LCONTROL:
         case C_LOPTION:
         case C_LCOMMAND:
