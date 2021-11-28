@@ -21,7 +21,7 @@
 #define U_NA KC_NO // present but not available for use
 #define U_NU KC_NO // available but not used
 
-enum layers { QWERTY,COLEMAK, NAV, NUM, SYM, FUN, MBO, MEDIA, MOUSE};
+enum layers { COLEMAK, QWERTY, NAV, NUM, SYM, FUN, MBO, MEDIA, MOUSE};
 
 #define U_RDO SCMD(KC_Z)
 #define U_PST LCMD(KC_V)
@@ -57,7 +57,17 @@ enum layers { QWERTY,COLEMAK, NAV, NUM, SYM, FUN, MBO, MEDIA, MOUSE};
 #define RAISE MO(_RAISE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
+  [COLEMAK] = LAYOUT_miryoku(
+      //,--------------------------------------------------------.                         ,---------------------------------------------------------.
+          KC_Q,    KC_W,     KC_F,    KC_P,     KC_G,                                         KC_J,     KC_L,     KC_U,    KC_Y,    KC_QUOT,
+      //|--------+---------+--------+--------+----------+--------|                         |---------+---------+---------+---------+--------+--------|
+          C_LCONTROL,C_LOPTION,C_LCOMMAND,C_LSHIFT,KC_D,                                      KC_H,    C_RSHIFT,C_RCOMMAND,C_ROPTION,C_RCONTROL,
+      //|--------+---------+--------+--------+----------+--------|                         |---------+---------+---------+---------+--------+--------|
+          KC_Z,    KC_X,     KC_C,     KC_V,      KC_B,                                        KC_K,      KC_M,   KC_COMM,  KC_DOT,   KC_SLSH,
+      //|--------+---------+--------+--------+----------+--------+------------|  |---------+---------+---------+---------+---------+--------+--------|
+                                      MEDIA_ESC, NAV_TAB, MOUSE_SPC,                 SYM_ENT, NUM_BSPC, FUN_DEL,                    DF(QWERTY)
+                                           //`--------------------------------'  `----------------------------'
+    ),
   [QWERTY] = LAYOUT_miryoku(
     //,------------------------------------------------.                         ,------------------------------------------------.
          KC_Q,     KC_W,    KC_E,    KC_R,      KC_T,                              KC_Y,     KC_U,     KC_I,    KC_O,      KC_P,
@@ -68,17 +78,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|----------+--------+--------+----------+--------+------------|  |---------+---------+---------+---------+---------+--------|
                             MEDIA_ESC, NAV_TAB, MOUSE_SPC,                         SYM_ENT, NUM_BSPC, FUN_DEL,          DF(COLEMAK)
                                 //`--------------------------------'  `----------------------------'
-  ),
-  [COLEMAK] = LAYOUT_miryoku(
-    //,--------------------------------------------------------.                         ,---------------------------------------------------------.
-        KC_Q,    KC_W,     KC_F,    KC_P,     KC_G,                                         KC_J,     KC_L,     KC_U,    KC_Y,    KC_QUOT,
-    //|--------+---------+--------+--------+----------+--------|                         |---------+---------+---------+---------+--------+--------|
-        C_LCONTROL,C_LOPTION,C_LCOMMAND,C_LSHIFT,KC_D,                                      KC_H,    C_RSHIFT,C_RCOMMAND,C_ROPTION,C_RCONTROL,
-    //|--------+---------+--------+--------+----------+--------|                         |---------+---------+---------+---------+--------+--------|
-        KC_Z,    KC_X,     KC_C,     KC_V,      KC_B,                                        KC_K,      KC_M,   KC_COMM,  KC_DOT,   KC_SLSH,
-    //|--------+---------+--------+--------+----------+--------+------------|  |---------+---------+---------+---------+---------+--------+--------|
-                                    MEDIA_ESC, NAV_TAB, MOUSE_SPC,                 SYM_ENT, NUM_BSPC, FUN_DEL,                    DF(QWERTY)
-                                         //`--------------------------------'  `----------------------------'
   ),
   [NAV] = LAYOUT_miryoku(
         //,--------------------------------------------.                    ,------- ----------------------------------.
