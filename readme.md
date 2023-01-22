@@ -4,5 +4,6 @@
 4. compile and enjoy
 *  `make crkbd:janvanrensbergen`
 * `make planck/rev6:janvanrensbergen`
+* `qmk compile -kb gmmk/gmmk2/p96/ansi -km janvanrensbergen` or `make gmmk/gmmk2/p96/ansi:janvanrensbergen`
 
 
