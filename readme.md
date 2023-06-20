@@ -5,5 +5,6 @@
 *  `make crkbd:janvanrensbergen`
 * `make planck/rev6:janvanrensbergen`
 * `qmk compile -kb gmmk/gmmk2/p96/ansi -km janvanrensbergen` or `make gmmk/gmmk2/p96/ansi:janvanrensbergen`
+* `splitkb/aurora/sweep/rev1:janvanrensbergen` copy .uf2 file to usb drive mounted when double tap reset button
 
 

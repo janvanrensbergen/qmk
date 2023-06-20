@@ -56,6 +56,10 @@ enum layers { COLEMAK, QWERTY, NAV, NUM, SYM, FUN, MBO, MEDIA, MOUSE};
 #define NUM_BSPC  LT(NUM, KC_BSPC)
 #define FUN_DEL   LT(FUN, KC_DEL)
 
+const uint16_t PROGMEM cpslk_combo[] = {C_LCONTROL, C_RCONTROL, COMBO_END};
+combo_t key_combos[] = {
+    COMBO(cpslk_combo, KC_CAPS),
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COLEMAK] = LAYOUT_split_3x6_3(
@@ -83,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [NAV] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-             U_NA,    RESET,   U_NA,    U_NA,    U_NA,    U_NA,                          U_NA, U_PST,   U_CPY,   U_CUT,   U_UND,  U_RDO,
+             U_NA,    QK_BOOT,   U_NA,    U_NA,    U_NA,    U_NA,                          U_NA, U_PST,   U_CPY,   U_CUT,   U_UND,  U_RDO,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
              U_NA,   KC_LCTL, KC_LALT,  KC_LGUI, KC_LSFT, U_NA,                          U_NA, KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT, KC_CAPS,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -94,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [NUM] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-            U_NA,    KC_LBRC,  KC_7,    KC_8,    KC_9,  KC_RBRC,                        U_NA,    U_NA,    U_NA,    U_NA,   RESET,   U_NA,
+            U_NA,    KC_LBRC,  KC_7,    KC_8,    KC_9,  KC_RBRC,                        U_NA,    U_NA,    U_NA,    U_NA,   QK_BOOT,   U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
             U_NA,    KC_SCLN,  KC_4,    KC_5,    KC_6,   KC_EQL,                        U_NA,   KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL,  U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -105,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [SYM] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-            U_NA,   KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN,  KC_RCBR,                      U_NA,    U_NA,    U_NA,    U_NA,    RESET,  U_NA,
+            U_NA,   KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN,  KC_RCBR,                      U_NA,    U_NA,    U_NA,    U_NA,    QK_BOOT,  U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
             U_NA,   KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS,                        U_NA,   KC_LSFT,   KC_LGUI, KC_LALT, KC_LCTL, U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -116,9 +120,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [FUN] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-            U_NA,    KC_F12,  KC_F7,   KC_F8,   KC_F9,  KC_PSCR,                        U_NA,    U_NA,    U_NA,    U_NA,  RESET,    U_NA,
+            U_NA,    KC_F12,  KC_F7,   KC_F8,   KC_F9,  KC_PSCR,                        U_NA,    U_NA,    U_NA,    U_NA,  QK_BOOT,    U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-            U_NA,    KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_SLCK,                       U_NA,  KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL,   U_NA,
+            U_NA,    KC_F11,  KC_F4,   KC_F5,   KC_F6,  KC_SCRL,                        U_NA,  KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL,   U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
             U_NA,    KC_F10,  KC_F1,   KC_F2,   KC_F3,  KC_PAUS,                        U_NA,     U_NA,  U_NA,    KC_ALGR, U_NA,    U_NA,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -138,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [MEDIA] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-             U_NA,    RESET,   U_NA,    U_NA,    U_NA,    U_NA,                         RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, U_NA,
+             U_NA,    QK_BOOT,   U_NA,    U_NA,    U_NA,    U_NA,                         RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
              U_NA,   KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,                         U_NU,    KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -149,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [MOUSE] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-            U_NA,    RESET,   U_NA,    U_NA,    U_NA,    U_NA,                         U_PST,   U_CPY,   U_CUT,   U_UND,  U_RDO,   U_NA,
+            U_NA,    QK_BOOT,   U_NA,    U_NA,    U_NA,    U_NA,                         U_PST,   U_CPY,   U_CUT,   U_UND,  U_RDO,   U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
             U_NA,    KC_LCTL, KC_LALT,  KC_LGUI, KC_LSFT, U_NA,                         U_NU,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, U_NA,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
