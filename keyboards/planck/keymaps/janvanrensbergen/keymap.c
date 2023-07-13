@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [NAV] = LAYOUT_miryoku(
         //,--------------------------------------------.                    ,------- ----------------------------------.
-             RESET,   U_NA,    U_NA,    U_NA,    U_NA,                        U_NA,  U_PST,   U_CPY,   U_CUT,   U_UND,
+            QK_BOOT,   U_NA,    U_NA,    U_NA,    U_NA,                        U_NA,  U_PST,   U_CPY,   U_CUT,   U_UND,
         //|--------+--------+--------+--------+--------|                    |------- -------+--------+--------+--------|
             KC_LCTL, KC_LALT,  KC_LGUI, KC_LSFT, U_NA,                        U_NA,  KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,
         //|--------+--------+--------+--------+--------|                    |------- -------+--------+--------+--------|
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //,--------------------------------------------.                    ,--------------------------------------------.
            KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN,  KC_RCBR,                      U_NA,    U_NA,    U_NA,    RESET,  U_NA,
         //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-           KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS,                       KC_LSFT,   KC_LGUI, KC_LALT, KC_LCTL, U_NA,
+           KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS,                       U_NA, KC_LSFT,   KC_LGUI, KC_LALT, KC_LCTL,
         //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
            KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE,                       U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
         //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //,-------------------------------------------.                    ,--------------------------------------------.
            KC_F12,  KC_F7,   KC_F8,   KC_F9,  KC_PSCR,                       U_NA,    U_NA,    U_NA,    U_NA,  RESET,
         //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+|
-           KC_F11,  KC_F4,   KC_F5,   KC_F6,  KC_SLCK,                       KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, U_NA,
+           KC_F11,  KC_F4,   KC_F5,   KC_F6,  KC_SCROLL_LOCK,                U_NA, KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL,
         //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+|
            KC_F10,  KC_F1,   KC_F2,   KC_F3,  KC_PAUS,                       U_NA,     U_NA,  U_NA,    U_NA,     U_NA,
         //|-------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+|
@@ -127,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        //,--------------------------------------------.                    ,---------------------------------------------.
           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+|
-          KC_LCTL, KC_LALT,  KC_LGUI, KC_LSFT, KC_TRNS,                       KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, KC_TRNS,
+          KC_LCTL, KC_LALT,  KC_LGUI, KC_LSFT, KC_TRNS,                      KC_TRNS,KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL,
        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+|
           U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,                         U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,
        //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+|
@@ -157,53 +157,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     //`--------------------------'  `--------------------------'
   )
 };
-
-
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case LCONTROL:
-    case LOPTION:
-    case LCOMMAND:
-    case LSHIFT:
-    case RSHIFT:
-    case RCOMMAND:
-    case ROPTION:
-    case RCONTROL:
-        return TAPPING_TERM - 50;
-    case MEDIA_ESC:
-    case NAV_TAB:
-    case MOUSE_SPC:
-    case SYM_ENT:
-    case NUM_BSPC:
-    case FUN_DEL:
-        return TAPPING_TERM + 50;
-    default:
-      return TAPPING_TERM;
-  }
-}
-
-bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    default:
-     case LCONTROL:
-        case LOPTION:
-        case LCOMMAND:
-        case LSHIFT:
-        case RSHIFT:
-        case RCOMMAND:
-        case ROPTION:
-        case RCONTROL:
-        case MEDIA_ESC:
-            return true;
-        case NAV_TAB:
-        case MOUSE_SPC:
-        case SYM_ENT:
-        case NUM_BSPC:
-        case FUN_DEL:
-            return false;
-      return true;
-  }
-}
 
 #ifdef AUDIO_ENABLE
   float plover_song[][2]     = SONG(PLOVER_SOUND);
